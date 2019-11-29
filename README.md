@@ -1,8 +1,10 @@
-# Git
+## Introducción a Git y GitHub - [Curso de Platzi Resúmen](https://platzi.com/git)
+
+Este repositorio sirve como
+
+ es el repositorio que se trabajo con Freddy Vega CEO de Platzi,  en el curso profesional de Git y Github. Para entender todo lo que se  aprendió, intentaré escribir en este readme un pequeño resumen. Sin  embargo puedes clonar este repositorio, revisar cada commit, el trabajo  con las ramas o ir a [al curso de git y github de Platzi](https://platzi.com/git)
 
 **Git** es un sistema de control de versiones (**VCS visual control system**), 
-
-
 
 Registra los **cambios** realizados sobre un archivo o conjunto de archivos a lo largo del **tiempo**, por lo tanto no tendrás versiones como `tarea.txt, tarea2.txt, tarea2-final.txt tarea2-final2.txt tarea2-final2-esteeselbueno.txt`, además de que envés de guardar los archivos completos sólo se guardan **sólo los cambios**.
 
@@ -18,17 +20,9 @@ Git es algo así como el `Ctrl+Z` (deshacer) de los programadores, suponiendo qu
 
 **Tipos de Control de versiones:**
 
-* Local 
-* Centralizado (en un sólo servidor)
-* Distribuído
-
-## Ventajas de git
-
-* Veloz
-* Diseño sencillo
-* Fuerte apoyo del desarrollo no lineal
-* Completamente distribuido
-* Capaz de manejar grandes proyectos
+* Local: Sólo funciona en una sóla máquina, es útil, pero no incorpora la colaboración.
+* Centralizado (en un sólo servidor): Toda la información está depositada en un sólo repositorio, lo que hace que el trabajo se maneje directamente en el servidor. 
+* Distribuído: La información se encuentra respaldada en diferentes peers, diferentes servidores y/o diferentes máquinas, lo que permite trabajar y compartir de manera sencilla.
 
 ## Archivos binarios y de texto plano
 
@@ -42,7 +36,15 @@ Trabajo online efectivo
 
 Git tiene Integridad: No puedes perder información durante su transmición
 
-## Local Operation
+### Ventajas de git contra otros manejadores de versiones
+
+* Veloz
+* Diseño sencillo
+* Fuerte apoyo del desarrollo no lineal
+* Completamente distribuido
+* Capaz de manejar grandes proyectos
+
+## Operaciones principales de git
 
 Es importante saber cuál es el estatus de tus cambios, ya que al modificar un archivo, éste no por defecto se va a git, sino que se modifica en el **working directory**, para que sea trackeado por git debe de pasar por el **staging area** y llegar al **repositorio**, opcionalmente podría llegar al **repositorio remoto**. A continuación más detalle.
 
@@ -70,8 +72,6 @@ Es importante saber cuál es el estatus de tus cambios, ya que al modificar un a
   ```bash
   git push origin master #Empuja (envía) los cambios de la rama master al servidor remoto 'origin' 
   ```
-
-  
 
 ## Commit
 
