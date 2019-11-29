@@ -1,16 +1,24 @@
-## Introducción a Git y GitHub - [Curso de Platzi Resúmen](https://platzi.com/git)
+## Cómo utilizar git y GitHub
 
-Este repositorio sirve como
+Este repositorio sirve como resúmen del [curso de Git y github de Platzi](https://platzi.com/github), por [Freddy Vega](https://github.com/freddier/hyperblog).
 
- es el repositorio que se trabajo con Freddy Vega CEO de Platzi,  en el curso profesional de Git y Github. Para entender todo lo que se  aprendió, intentaré escribir en este readme un pequeño resumen. Sin  embargo puedes clonar este repositorio, revisar cada commit, el trabajo  con las ramas o ir a [al curso de git y github de Platzi](https://platzi.com/git)
+**Git** es un sistema de control de versiones (**VCS version control system**), 
 
-**Git** es un sistema de control de versiones (**VCS visual control system**), 
+Registra los **cambios** realizados sobre un archivo o conjunto de archivos a lo largo del **tiempo**, por lo tanto no tendrás versiones como 
 
-Registra los **cambios** realizados sobre un archivo o conjunto de archivos a lo largo del **tiempo**, por lo tanto no tendrás versiones como `tarea.txt, tarea2.txt, tarea2-final.txt tarea2-final2.txt tarea2-final2-esteeselbueno.txt`, además de que envés de guardar los archivos completos sólo se guardan **sólo los cambios**.
+* tarea.txt
+* tarea2.txt
+* tarea2-final.txt 
+* tarea2-final2.txt 
+* tarea2-final2-esteeselbueno.txt 
+
+Además de que envés de guardar los archivos completos se guardan **sólo los cambios**.
 
 Git es algo así como el `Ctrl+Z` (deshacer) de los programadores, suponiendo que el `Ctrl Z` guardara todo el **historial de modificación** de los archivos, ya que con git puedes moverte en la historia (algo así como una máquina del tiempo).
 
 ## Flujo básico de git
+
+El flujo normal de git es el siguiente:
 
 `git init`: Empiezas un repositorio
 
@@ -100,9 +108,7 @@ git checkout master # nos cambiamos a la rama master
 git merge rama-nueva # Fusionamos los cambios de la 'rama-nueva' en master
 ```
 
-
-
-## Tracking files
+## Archivos trackeados
 
 - **Archivos Tracked**: Son los archivos que viven dentro de Git, no tienen cambios pendientes y sus últimas actualizaciones han  sido guardadas en el repositorio gracias a los comandos `git add` y `git commit`.
 - **Archivos Staged**: Son archivos en Staging. Viven dentro de Git y hay registro de ellos porque han sido afectados por el comando `git add`, aunque no sus últimos cambios. Git ya sabe de la existencia de estos  últimos cambios pero todavía no han sido guardados definitivamente en el repositorio porque falta ejecutar el comando `git commit`.
@@ -111,15 +117,25 @@ git merge rama-nueva # Fusionamos los cambios de la 'rama-nueva' en master
 
 ## Configurar el entorno de git
 
+Para configurar la información del usuario global de git de tu máquina deberás de utilizar el comando `git config` declarando que modificaras de manera `--global` la variable (`email` o `name`) de tú `user` lo que significa que estarás definiendo qué usuario está utilizando git en tu máquina (que firma su autenticidad)
+
 ```bash
 git config --global user.email "tu@email.com" # Configura el correo del usuario de git 
 git config --global user.name "Tu Nombre" # Configura el nombre del usuario de git 
 
 ```
 
-## Comandos
+Llaves SSH
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "email@dominio.org"
+```
+
+
 
 **git init**
+
+Con git init creas un entorno de trabajo para git, además de la carpeta oculta .git, dónde se guardará toda la información relevante al control de versiones, es muy sencillo, en un directorio que no esté trackeado por git usa el comando `git init`
 
 ```bash
 git init #Empiezas un repositorio
@@ -127,49 +143,31 @@ git init #Empiezas un repositorio
 
 **git add**
 
+Git add agrega los archivos y carpetas que elijas al staging area, que es como el espacio en memoria ram donde están los cambios que se van a subir en el futuro.
+
 ```bash
 git add <archivo.txt> # Agregas los cambios del archivo.txt al **staging area** para decirle a git que se prepare para guardar los cambios
-git add -A`
-```
-
-**Estado**
-
-```bash
-git status
+git add -A # Agregas todos los cambios al staging area
+git add . # Agregas los cambios de los subdirectorios de la carpeta en la que te encuentras
 ```
 
 **git commit**
 
+Graba los cambios que están en el `staging area` en el `repositorio`.
+
 ```bash
+git commit #Se prepara para hacer commit y abre el editor por defecto de la terminal para ponerle nombre
 git commit -m 'Descripción del commit': #Guarda los cambios en la base de datos del VCS (creando una nueva versión)
 git commit --amend:
 ```
 
-**Información**
+**Estado**
+
+Muestra el estado del working directory, muestra si hay cambios en el working directory sin agregar, o si hay algo en el staging area sin que se haya hecho un commit.
 
 ```bash
-git status:
-git show:
-git log:
+git status
 ```
-
-**Repositorio**
-
-```bash
-git push
-git pull
-```
-
-**git tag**
-
-```bash
-git tag -d #borrado del tag
-git tag -f -a <version-nueva> -m  <Comentario> <version>
-git tag -l Ver
-git tag -a
-```
-
-
 
 **git log** 
 
@@ -182,9 +180,13 @@ git log --oneline #Resumido
 git log --oneline --graph #Te lo muestra Resumido y bonito
 ```
 
-**git show**
+**Show**
 
-Es como log, pero con la diferencia de que muestra los cambios precisos que se hicieron en el commit
+Muestra el mensaje del último commit y la diferencia textual. Es como log, pero con la diferencia de que muestra los cambios precisos que se hicieron en el commit
+
+```bash
+git show
+```
 
 **git diff**
 
@@ -211,20 +213,29 @@ git config --global core.editor “nano --wait”
 
 **Branchs (Ramas)**
 
+Versiones alternas de un proyecto
+
 ```bash
-git branch nombre #Versiones alternas de un proyecto
-git branch -d nombre
-git branch -D nombre #Eliminar rama
-git branch -m nombre_viejo nombre_nuevo
+git branch nombre 
+git branch -d nombre # Eliminar rama
+git branch -D nombre # Forzar eliminado de rama
+git branch -m nombre_viejo nombre_nuevo # Cambiar nombre de la rama
 git checkout #cambiar de ramas
-git checkout cambio_rama
-git checkout -b nueva-imagen # Crear rama y switchear
+git checkout cambio_rama # Cambiar a la rama <cambio_rama>
+git checkout -b nueva-imagen # Crear rama <nueva-imagen> y switchear a ésta
 git merge <rama-arreglada> # mezclando la rama actual con la <rama-arreglada> 
 # Tenemos que estar en la rama output para hacer un merge o un rebase
 git merge --abort
 git rebase # hace prácticamente lo mismo que merge, cambiamos la historia de nuestro proyecto sin crear bifurcaciones del proyecto. Es mejor usar merge, 
 #Usar solo git rebase de manera local.
 
+```
+
+**Repositorio**
+
+```bash
+git push
+git pull
 ```
 
 
@@ -266,3 +277,12 @@ Llaves SSH
 ssh-keygen -t rsa -b 4096 -C "davbelom@gmail.com"
 Proyectos
 Proyecto por feature grande
+
+**git tag**
+
+```bash
+git tag -d #borrado del tag
+git tag -f -a <version-nueva> -m  <Comentario> <version>
+git tag -l Ver
+git tag -a
+```
