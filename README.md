@@ -231,14 +231,77 @@ git rebase # hace prácticamente lo mismo que merge, cambiamos la historia de nu
 
 ```
 
-**Repositorio**
+## Repositorio remoto (GitHub)
+
+GitHub es el cliente de git más popular, tanto que, se podría decir que es la red social del código, ésto porque te permite tener tus repositorios en la nube, tener un perfil profesional (con los aportes, tus repositorios y demás información de tu vidad de programador) y todo con un núcleo de git por dentro.
+
+.
+
+Como git es un VMS distribuído, entonces el código funciona en diferentes servidores (máquinas), pero para que vinculemos un servidor remoto tenemos que configurar un origen que indique con qué repositorio remoto estaremos trabajando, básicamente es una sintaxis que nos indica que le vamos a poner un pseudónimo a la url de dónde vamos a trabajar.
+
+.
+
+El comando para agregar un orígen remoto es:
 
 ```bash
-git push
-git pull
+git remote add origin <url_repositorio>
 ```
 
+Donde:
 
+* **git remote** = El comando que indica que vamos a trabajar con un servidor remoto
+* **add** = Agrega un alias para el servidor remoto
+* **origin** = Es el alias del servidor remoto (ésto para no tener que poner la url completa cada que quieres hacer un cambio)
+* **<url_repositorio>** = Es la url dónde está el repositorio en la nube, en este caso de github (https://github.com/<tu_usuario_de_github>/<nombre_de_tu_repositorio>)
+
+Ya que agregaste tu servidor remoto `origin` puedes jalaro o empujar los cambios, osea sincronizar tu servidor remoto con el local, para eso tenemos 2 comandos
+
+* git pull: Jala los cambios del servidor, pero cómo podemos tener configurados diferentes repositorios remotos, tenemos que definir de dónde lo vamos a bajar y qué rama vamos a bajar, para eso podemos utilizar el siguiente comando:
+
+  ```bash
+  git pull <remoto> <rama>
+  ```
+
+  En el caso de la rama master y el remoto origin:
+
+  ```bash
+  git pull origin master
+  ```
+
+  Ésto bajará todos los cambios a tu local, pero si de pura casualidad la historia es diferente (el repositorio remoto tiene commits diferentes, puede ser un Readme nuevo) tienes que forzar bajar los cambios con el flag `--allow-unrelated-histories`.
+
+  ```bash
+  git pull origin master --allow-unrelated-histories
+  ```
+
+* git push: Empuja los cambios desde el local al remoto.
+
+  ```bash
+  git push <remote> <rama>
+  ```
+
+  La sintaxis es la misma que para el pull:
+
+  ```bash
+  git push origin master
+  ```
+
+
+
+## Llaves públicas y privadas
+
+Es un problema guardar el usuario y la contraseña de tu cuenta de github en tu máquina porque puede ser extraído si alguien accede a tu equipo, para eso podemos cifrar tu identidad con el algoritmo de Llaves públicas y privadas (o Cifrado asimétrico de un sólo camino )
+
+Este algoritmo sirve para mandar mensajes privados entre varios nodos con la lógica de que firmas tu mensaje con una llave pública vinculada con una llave privada que puede leer el mensaje.
+
+El flujo es:
+
+1. Creas una llave pública y una llave privada (ambas están vinculadas)
+2. Cifras el mensaje con la llave pública (puede ser llave de otra persona)
+3. Envías el mensaje
+4. El receptor, al tener la llave privada puede descifrar el mensaje.
+
+Este algoritmo es completamente seguro, así es cómo se mandan las comunicaciones en bancos, la comunicación entre servidores o las firmas electrónicas.
 
 ### Git stash
 
@@ -263,11 +326,49 @@ Vim
 MAC
 pbcopy < “archivo”
 
-## Fork
+## Forks o Bifurcaciones
 
-Copia local de un repositorio
-git remote add origin master
-Fetch
+Es una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub, éste repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio), en pocas palabras, lo podremos utilizar como un git cualquiera
+
+Un fork es como una bifurcación del repositorio completo, tiene una historia en común, pero de repente se bifurca y pueden variar los cambios, ya que ambos proyectos podrán ser modificados en paralelo y para estar al día un colaborador tendrá que estar actualizando su fork con la información del original.
+
+Al hacer un fork de un poryecto en GitHub, te conviertes en dueñ@ del repositorio fork, puedes trabajar en éste con todos los permisos, pero es un repositorio completamente diferente que el original, teniendo alguna historia en común.
+
+Los forks son importantes porque es la manera en la que funciona el open source, ya que, una persona puede no ser colaborador de un proyecto, pero puede contribuír al mismo, haciendo mejor software que pueda ser utilizado por cualquiera.
+
+Al hacer un fork, GitHub sabe que se hizo el fork del proyecto, por lo que se le permite al colaborador hacer pull request desde su repositorio propio.
+
+## Trabajando con más de 1 repositorio remoto
+
+Cuando trabajas en un proyecto que existe en **diferentes repositorios remotos** (normalmente a causa de un **fork**) es muy probable que desees poder **trabajar con ambos repositorios**, para ésto puedes crear un **remoto adicional** desde consola.
+
+```bash
+git remote add <nombre_del_remoto> <url_del_remoto> 
+```
+
+```bash
+git remote upstream https://github.com/freddier/hyperblog
+```
+
+Al crear un **remoto adicional** podremos, hacer **pull** desde el nuevo **origen** (en caso de tener permisos podremos hacer fetch y push)
+
+```bash
+git pull <remoto> <rama>
+```
+
+```bash
+git pull upstream master
+```
+
+Éste `pull` nos traerá los **cambios del remoto**, por lo que se estará al día en el proyecto, el flujo de trabajo cambia, en adelante se estará trabajando haciendo **pull desde el upstream** y **push al origin** para pasar a hacer **pull request**.
+
+```bash
+git pull upstream master
+git push origin master
+```
+
+## Fetch
+
 git fetch origin master
 git push
 git push origin master --tags
@@ -278,11 +379,59 @@ ssh-keygen -t rsa -b 4096 -C "davbelom@gmail.com"
 Proyectos
 Proyecto por feature grande
 
-**git tag**
+## Etiquetas, versiones
 
-```bash
-git tag -d #borrado del tag
-git tag -f -a <version-nueva> -m  <Comentario> <version>
-git tag -l Ver
-git tag -a
-```
+Comandos para trabajar con etiquetas:
+
+- Crear un nuevo tag y asignarlo a un commit: 
+
+  ```bash
+  git tag -f -a <version-nueva> -m  <Comentario> <version>
+  git tag -f -a nombre-del-tag id-del-commit
+  ```
+
+* Borrar un tag en el repositorio local: 
+
+  ```bash
+  git tag -d nombre-del-tag
+  ```
+
+- Listar los tags de nuestro repositorio local: 
+
+  ```bash
+  git tag
+  git show-refs --tags
+  ```
+
+- Publicar un tag en el repositorio remoto
+
+  ```bash
+  git push origin --tags
+  ```
+
+- Borrar un tag del repositorio remoto: 
+
+  ```bash
+  git tag -d nombre-del-tag # Borrar los tags en local
+  git push origin :refs/tags/nombre-del-tag # Borrar los tags en remoto
+  ```
+
+## Pull request: 
+
+Es una funcionalidad de github (en gitlab llamada merge request y en bitbucket push request), en la que un colaborador pide que revisen sus cambios antes de hacer merge a una rama, normalmente master.
+
+Al hacer un pull request se genera una conversación que pueden seguir los demás usuarios del repositorio, así como autorizar y rechazar los cambios.
+
+El flujo del pull request es el siguiente
+
+1. Se trabaja en una **rama paralela** los cambios que se desean (`git checkout -b <rama>`)
+2. Se hace un **commit** a la rama (`git commit -am '<Comentario>'`)
+3. Se **suben** al **remoto** los **cambios** (`git push origin <rama>`)
+4. En GitHub se hace el `pull request` comparando la **rama master** con la rama del **fix**.
+5. Uno, o varios colaboradores  revisan que el **código sea correcto** y dan **feedback** (en el chat del pull request)
+6. El colaborador hace los cambios que desea en la **rama** y lo **vuelve a subir** al remoto (automáticamente jala la historia de los cambios que se hagan en la rama, en remoto)
+7. Se **aceptan los cambios** en GitHub
+8. Se hace **merge** a `master` desde GitHub
+
+**Importante**: Cuando se modifica una `rama`, también se modifica el `pull request`
+
