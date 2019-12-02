@@ -233,7 +233,7 @@ git rebase # hace prácticamente lo mismo que merge, cambiamos la historia de nu
 
 ## Repositorio remoto (GitHub)
 
-GitHub es el cliente de git más popular, tanto que, se podría decir que es la red social del código, ésto porque te permite tener tus repositorios en la nube, tener un perfil profesional (con los aportes, tus repositorios y demás información de tu vidad de programador) y todo con un núcleo de git por dentro.
+GitHub es un sistema online de manejo de repositorios de Git, es el cliente de git más popular, tanto que, se podría decir que es la red social del código, ésto porque te permite tener tus repositorios en la nube, tener un perfil profesional (con los aportes, tus repositorios y demás información de tu vidad de programador) y todo con un núcleo de git por dentro.
 
 Como git es un VMS distribuído, entonces el código funciona en diferentes servidores (máquinas), pero para que vinculemos un servidor remoto tenemos que configurar un origen que indique con qué repositorio remoto estaremos trabajando, básicamente es una sintaxis que nos indica que le vamos a poner un pseudónimo a la url de dónde vamos a trabajar.
 
@@ -324,7 +324,9 @@ pbcopy < “archivo”
 
 ## Forks o Bifurcaciones
 
-Es una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub, éste repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio), en pocas palabras, lo podremos utilizar como un git cualquiera
+Es una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio público a mis repositorios en Github, éste repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio), en pocas palabras, lo podremos utilizar como un git cualquiera.
+
+Copiar un repositorio público a mis repositorios en Github, con todas sus ramas e historia anterior
 
 Un fork es como una bifurcación del repositorio completo, tiene una historia en común, pero de repente se bifurca y pueden variar los cambios, ya que ambos proyectos podrán ser modificados en paralelo y para estar al día un colaborador tendrá que estar actualizando su fork con la información del original.
 
@@ -362,18 +364,6 @@ git pull upstream master
 git pull upstream master
 git push origin master
 ```
-
-## Fetch
-
-git fetch origin master
-git push
-git push origin master --tags
-git push origin “branch”
-git pull origin master
-Llaves SSH
-ssh-keygen -t rsa -b 4096 -C "davbelom@gmail.com"
-Proyectos
-Proyecto por feature grande
 
 ## Etiquetas, versiones
 
@@ -611,4 +601,14 @@ Muchos comandos de Git aceptan un parámetro para especificar una referencia o "
   git checkout master
   git merge eff544f # Fusionará en un nuevo commit la historia de master con el momento específico en el que vive eff544f
   ```
+
+## Comandos no documentados
+
+```bash
+git config --global alias.platzi "shortlog"
+```
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "davbelom@gmail.com"
+```
 
