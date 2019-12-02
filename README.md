@@ -612,24 +612,3 @@ Muchos comandos de Git aceptan un parámetro para especificar una referencia o "
   git merge eff544f # Fusionará en un nuevo commit la historia de master con el momento específico en el que vive eff544f
   ```
 
-## Comandos y recursos colaborativos en Git y Github
-
-**`git shortlog`**: Ver cuantos commits a hecho los miembros del equipo
-
-**`git shortlog -sn`**: Las personas que han hecho ciertos commits
-
-**`git shortlog -sn --all`**: Todos los commits (también los borrados)
-
-**`git shortlog -sn --all --no-merges`**: muestra las estadisticas de los comigs del repositorio donde estoy
-
-**`git config --global alias.stats “shortlog -sn --all --no-merges”`**: configura el comando “shortlog -sn --all --no-merges” en un Alias en las configuraciones globales de git del pc
-
-**`git blame -c blogpost.html`**: Muestra quien ha hecho cambios en dicho archivo identado
-
-**`git blame --help`**: Muestra en el navegador el uso del comando
-
-**`git blame archivo -L 35, 60 -c`**: Muestra quien escribio el codigo con informacion de la linea 35 a la 60, EJ: `git blame css/estilos.css -L 35, 60 -c`
-
-**`git branch -r`**: Muestra las Ramas remotas de GitHub
-
-**`git branch -a`**: Muestra todas las Ramas del repo y remotas de GitHub
