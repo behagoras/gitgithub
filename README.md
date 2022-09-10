@@ -122,6 +122,7 @@ Para configurar la información del usuario global de git de tu máquina deberá
 ```bash
 git config --global user.email "tu@email.com" # Configura el correo del usuario de git 
 git config --global user.name "Tu Nombre" # Configura el nombre del usuario de git 
+git config --list #ver la configuracion
 
 ```
 
@@ -159,7 +160,7 @@ Graba los cambios que están en el `staging area` en el `repositorio`.
 git commit #Se prepara para hacer commit y abre el editor por defecto de la terminal para ponerle nombre
 git commit -m 'Descripción del commit': #Guarda los cambios en la base de datos del VCS (creando una nueva versión)
 git commit --amend: #
-git comit -am "commit": #hace "git add" y agrega un commit (no funciona en archivos nuevos, solo en aquellos que ya se habia hecho "git add")
+git commit -am "commit": #hace "git add" y agrega un commit (no funciona en archivos nuevos, solo en aquellos que ya se habia hecho "git add")
 ```
 
 **Estado**
