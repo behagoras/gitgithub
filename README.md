@@ -158,7 +158,8 @@ Graba los cambios que están en el `staging area` en el `repositorio`.
 ```bash
 git commit #Se prepara para hacer commit y abre el editor por defecto de la terminal para ponerle nombre
 git commit -m 'Descripción del commit': #Guarda los cambios en la base de datos del VCS (creando una nueva versión)
-git commit --amend:
+git commit --amend: #
+git comit -am "commit": #hace "git add" y agrega un commit (no funciona en archivos nuevos, solo en aquellos que ya se habia hecho "git add")
 ```
 
 **Estado**
