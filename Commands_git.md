@@ -155,7 +155,7 @@ Este comando funciona únicamente si has clonado de un servidor en el que tienes
 
 
 ## :coffee: Etiquetas
-Especifica puntos especificos importantes en la historio, por ejemplo vesiones.
+Especifica puntos especificos importantes en la historio, por ejemplo versiones.
 
 ### Listar etiquetas
 
@@ -198,11 +198,16 @@ Crea una etiqueta firmada con GPG, siempre que tengas una clave privada
 
 ### Enviar etiquetas
 
-* `git push origin [tagname]` 
+* `git push origin [tagname]` y
 
 Git no manda las etiquetas al servidor cuando de hace un push, para ello se debe hacer un push al igual como una rama pero con el nombre de la etiqueta
 
 * `$ git push origin --tags`  Envía varias etiquetas a la vez
+
+### Eliminar tags
+
+* `$ git tag -d nombre-tag` Para eliminar un tag (localmente)
+* `$ git push origin ref/tags/nombre-tag` Para eliminar un tag en origin
 
 
 ## :coffee: Alias en Git
@@ -231,7 +236,10 @@ Git permite colocar alias a los comandos que vienen por defecto
 
 * `$ git pull origin name-branch` Traer ramas remotas
 
-* `$ git push origin --delete name-branch` Eliminar ramas remotas
+* `$ git branch -D name-branch` Eliminar ramas local
+
+* `$ git push origin --delete name-branch` Y
+* `$ git push origin :name-branch` Eliminar ramas remotas
 
 
 ## :coffee: Creación de primeros archivos para repositorio
