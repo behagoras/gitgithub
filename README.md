@@ -130,6 +130,10 @@ Llaves SSH
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "email@dominio.org"
+
+ssh-keygen -t ed25519 -C "email@ejample.com" #Algoritmo actualizado
+
+cat ~/.ssh/id_rsa.pub #Copiar la llave SSH
 ```
 
 
