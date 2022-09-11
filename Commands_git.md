@@ -40,6 +40,9 @@ Esta herramienta se usa para resolver conflictos
 
 Para agregar la clave ssh a github, en caso de realizar conexiones al servidor mediante este protocolo, ver el la documentación de github [Conectando a github con SSH](https://help.github.com/articles/connecting-to-github-with-ssh/)
 
+Tutorial de platzi
+https://platzi.com/tutoriales/1557-git-github/4067-configurar-llaves-ssh-en-git-y-github/
+
 
 ## :coffee: Comandos Básicos
 
