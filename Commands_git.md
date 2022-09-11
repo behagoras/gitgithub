@@ -6,6 +6,12 @@ GitHub: https://github.com/jocode
 ## :coffee: Agregar la identidad
 Es necesario configurar la primera vez git, y eso lo hacemos usando los siguientes comandos. Para descargar git en windows, lo podemos hacer en la siguiente dirección https://git-scm.com/download/win.
 
+### instalar Gitk
+
+* `$ sudo apt-get update`
+* `$ sudo apt-get install gitk`
+* `$ gitk #Iniciar gitk`
+
 ### Identidad
 
 * `$ git config --global user.name "John Doe"`
