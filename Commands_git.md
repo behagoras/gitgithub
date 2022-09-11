@@ -242,6 +242,11 @@ Git permite colocar alias a los comandos que vienen por defecto
 * `$ git push origin :name-branch` Eliminar ramas remotas
 
 
+## :coffee: Merge
+
+* `$ git merge nombre-rama` Une la rama "nombre-rama" a la rama principal (main), esto solo lo hace el dueño del repositorio
+
+
 ## :coffee: Creación de primeros archivos para repositorio
 
 Crear un nuevo repositorio en la línea de comandos
