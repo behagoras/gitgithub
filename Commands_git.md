@@ -226,6 +226,9 @@ Git permite colocar alias a los comandos que vienen por defecto
 
 * `$ git checkout -b name-branch`  Crear ramas y cambiar a la rama creada
 
+*  `$ git show-branch`  Y
+*  `$ git show-branch --all` Muestran las ramas y su historia
+
 * `$ git pull origin name-branch` Traer ramas remotas
 
 * `$ git push origin --delete name-branch` Eliminar ramas remotas
