@@ -246,6 +246,10 @@ Git permite colocar alias a los comandos que vienen por defecto
 
 * `$ git merge nombre-rama` Une la rama "nombre-rama" a la rama principal (main), esto solo lo hace el dueño del repositorio
 
+Despues de esto hacemos
+
+* `$ git pull origin master`
+* `$ git push origin master`
 
 ## :coffee: Creación de primeros archivos para repositorio
 
